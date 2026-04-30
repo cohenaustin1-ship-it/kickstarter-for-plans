@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-ink-950 text-slate-100 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(22, 216, 115, 0.08), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(16, 185, 129, 0.05), transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-ink-700/60 bg-ink-900/70 backdrop-blur-sm;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:border-signal-500/40 hover:bg-ink-800/80;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn bg-signal-500 text-ink-950 hover:bg-signal-400 active:bg-signal-600;
+  }
+  .btn-secondary {
+    @apply btn bg-ink-700 text-slate-100 hover:bg-ink-600;
+  }
+  .btn-ghost {
+    @apply btn text-slate-300 hover:bg-ink-800 hover:text-white;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium;
+  }
+  .badge-pending {
+    @apply badge bg-warn-500/15 text-warn-400 ring-1 ring-warn-500/30;
+  }
+  .badge-confirmed {
+    @apply badge bg-signal-500/15 text-signal-400 ring-1 ring-signal-500/30;
+  }
+  .badge-failed {
+    @apply badge bg-danger-500/15 text-danger-400 ring-1 ring-danger-500/30;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-700 bg-ink-900 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-signal-500/60 focus:outline-none focus:ring-2 focus:ring-signal-500/20 transition-colors;
+  }
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #070a14; }
+::-webkit-scrollbar-thumb { background: #1a2547; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #28335a; }
+
+/* Subtle pulse for live states */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
